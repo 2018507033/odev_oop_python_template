@@ -22,38 +22,20 @@ Sınıf=4
 '''
 
 class urunler:
-name = ""
-comments = ""
-OTVvergi = 0
-KDVvergi = 0
-ilk_fiyat = 0
-son_fiyat = 0
-def __init__(self,qname,qOTVvergi,qKDVvergi,qilk_fiyat)
-self.name=qname
-self.OTVvergi=qOTVvergi
-self.KDVvergi=qKDVvergi
-self.ilk_fiyat = qilk_fiyat
-self.fiyat()
-
-def fiyat(self)
-tmp = self.ilk_fiyat + (self.ilk_fiyat*self.OTVvergi)
-self.son_fiyat= tmp + (tmp*self.KDVvergi)
-
-def pprint(self):
-    print(f'{self.name}\'ın Fiyatı {self.son_fiyat}TL')
-    ekmek = urunler ("Lavaş",0.1,0.2,200)
-    peynir = urunler("kaşar",0.2,0.3,300)
+urun_adi= ""
+urun_alis_fiyati= 0
+urun_otv_orani= 0
+urun_kdv_orani=0
+    def __init__(self,qurun_adi, qurun_alis_fiyati, qurun_otv_orani, qurun_kdv_orani)
+      self.urun_adi=qurun_adi
+      self.urun_alis_fiyati=qurun_alis_fiyati
+      self.urun_otv_orani=qurun_otv_orani
+      self.urun_kdv_orani= qurun_kdv_orani
+      
+    def urun_satis_fiyati(self,kar_orani):
     
-   ekmek.pprint()
-
-lavaşın fiyatı 264.0TL
-
-peynir.pprint()
-Kaşarın Fiyatı 468.0TL
     
-          
-    
-def sepet_fiyati(kar_orani):
+    def sepet_fiyati(kar_orani):
     '''
     Fonksiyon urunlerin toplam fiyatini geri dönüş değeri olarak dondurmelidir. (5 puan)
     Sadece #------**------ işareti ile belirtilen 
@@ -61,25 +43,25 @@ def sepet_fiyati(kar_orani):
 
     toplam değişkenini doldurmanız beklenmektedir.
     '''
-    ekmek=urunler('ekmek',1,0.20,0.12)
-    patates=urunler('patates',2,0.16,0.18)
-    elma=urunler('elma',3,0.11,0.22)
-    un=urunler('un',4,0.17,0.05)
-    yumurta=urunler('yumurta',5,0.30,0.19)
-    toplam=0   
+        ekmek=urunler('ekmek',1,0.20,0.12)
+        patates=urunler('patates',2,0.16,0.18)
+        elma=urunler('elma',3,0.11,0.22)
+        un=urunler('un',4,0.17,0.05)
+        yumurta=urunler('yumurta',5,0.30,0.19)
+        toplam=0   
     #-------**-----------
-
+       toplam=ekmek.urun_satis_fiyati(kar_orani)+patates.urun_satis_fiyati(kar_orani)+elma.urun_satis_fiyati(kar_orani)+un.urun_satis_fiyati(kar_orani)+yumurta.urun_satis_fiyati(kar_orani)
 
     #-------**-----------
     return toplam
 
 
-def odev_test():
-    sepet_toplam = sepet_fiyati(0.15)
-    if sepet_toplam==23.91218:
-        print("doğru")
-    else:
-        print("yanlış")
+    def odev_test():
+       sepet_toplam = sepet_fiyati(0.15)
+       if sepet_toplam==23.91218:
+           print("doğru")
+       else:
+           print("yanlış")
 
 
 #bu test methodunu kullanarak yazdığınız kodu test edebilirsiniz
